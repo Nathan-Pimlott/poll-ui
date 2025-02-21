@@ -12,6 +12,7 @@ export type IPollToCreate = Omit<IPoll, "id">;
 export interface IPollOption {
   id: string;
   title: string;
+  votes: number;
   pollId: string;
 }
 

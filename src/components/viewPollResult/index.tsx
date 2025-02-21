@@ -8,6 +8,7 @@ import {
   Container,
   Grid2 as Grid,
   IconButton,
+  LinearProgress,
   Snackbar,
   Typography,
 } from "@mui/material";
@@ -29,6 +30,8 @@ export default () => {
       return await getPoll(pollId!);
     },
   });
+
+  console.log({ poll });
 
   return (
     <Container
@@ -71,21 +74,41 @@ export default () => {
                 }}
               >
                 <Typography variant="h4" textAlign="center">
+                  Thanks for voting!
+                </Typography>
+                <Typography variant="h6" textAlign="center">
                   {poll.title}
                 </Typography>
               </Container>
-              {poll.options?.map((option, idx) => (
+              {poll.options?.map((option) => (
                 <Container style={{ padding: "0 20px 20px 20px" }}>
-                  <Button
-                    variant="contained"
-                    fullWidth
-                    style={{
-                      padding: 15,
-                      textTransform: "none",
-                    }}
-                  >
-                    <Typography>{option.title}</Typography>
-                  </Button>
+                  <div style={{ position: "relative", display: "flex" }}>
+                    <LinearProgress
+                      style={{ height: 54, width: "100%", borderRadius: 5 }}
+                      variant="determinate"
+                      value={((option.votes || 0) / poll.votes) * 100}
+                    />
+                    <Typography
+                      style={{
+                        position: "absolute",
+                        color: "white",
+                        top: 15,
+                        left: 15,
+                      }}
+                    >
+                      {option.title}
+                    </Typography>
+                    <Typography
+                      style={{
+                        position: "absolute",
+                        color: "white",
+                        top: 15,
+                        right: 15,
+                      }}
+                    >
+                      {(((option.votes || 0) / poll.votes) * 100).toFixed(0)}%
+                    </Typography>
+                  </div>
                 </Container>
               ))}
             </Card>

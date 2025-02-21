@@ -1,5 +1,5 @@
 import { IPoll } from "../types";
-import { get } from "../utils/request";
+import { get, post } from "../utils/request";
 
 export async function getPolls(): Promise<IPoll[]> {
   const pollsRes = await get("/polls");
@@ -19,4 +19,14 @@ export async function getPoll(pollId: string): Promise<IPoll> {
   }
 
   return pollRes.data as IPoll;
+}
+
+export async function addPollVote(pollId: string, optionId: string) {
+  const addVoteRes = await post("/vote", { pollId, optionId });
+
+  if (addVoteRes.error) {
+    throw Error("Error getting poll. Please try again later.");
+  }
+
+  return addVoteRes.data as IPoll;
 }

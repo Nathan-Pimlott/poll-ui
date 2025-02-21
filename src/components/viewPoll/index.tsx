@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
-import { getPoll } from "../../services/poll";
+import { addPollVote, getPoll } from "../../services/poll";
 
 export default () => {
   const { pollId } = useParams();
@@ -29,6 +29,13 @@ export default () => {
       return await getPoll(pollId!);
     },
   });
+
+  async function callAddPollVote(optionId: string) {
+    try {
+      await addPollVote(pollId!, optionId);
+      navigate(`/poll/${pollId}/result`);
+    } catch (error) {}
+  }
 
   return (
     <Container
@@ -82,6 +89,9 @@ export default () => {
                     style={{
                       padding: 15,
                       textTransform: "none",
+                    }}
+                    onClick={() => {
+                      callAddPollVote(option.id);
                     }}
                   >
                     <Typography>{option.title}</Typography>
