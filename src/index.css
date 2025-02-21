@@ -1,0 +1,7 @@
+.MuiContainer-root {
+  height: 100%;
+}
+.MuiGrid2-root {
+  height: 100%;
+  display: flex;
+}
