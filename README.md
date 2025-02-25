@@ -43,3 +43,9 @@ npm run test:functional
 ```
 
 You should see the output of the tests in terminal
+
+### TODO
+
+- Add more functional tests to test for errors etc.
+- Clean up styling.
+- Move away from material ui, maybe add tailwind?
