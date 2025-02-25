@@ -15,24 +15,26 @@ interface IProps {
   polls: IPoll[];
 }
 
+const columns = ["Title", "Total Votes", "Options"];
+
 export default ({ polls }: IProps) => {
   const navigate = useNavigate();
+
   return (
     <TableContainer component={Paper} style={{ marginTop: 10 }}>
-      <Table>
+      <Table id="poll-table">
         <TableHead>
           <TableRow>
-            <TableCell>Title</TableCell>
-            <TableCell>Total votes</TableCell>
-            <TableCell>Options</TableCell>
+            {columns.map((column, idx) => (
+              <TableCell key={idx}>{column}</TableCell>
+            ))}
           </TableRow>
         </TableHead>
         <TableBody>
-          {polls?.map((poll) => (
+          {polls?.map((poll, idx) => (
             <TableRow
-              key={poll.id}
+              key={idx}
               sx={{
-                // "&:last-child td, &:last-child th": { border: 0 },
                 cursor: "pointer",
               }}
               hover
@@ -40,9 +42,7 @@ export default ({ polls }: IProps) => {
                 navigate(`/poll/${poll.id}`);
               }}
             >
-              <TableCell component="th" scope="row">
-                {poll.title}
-              </TableCell>
+              <TableCell>{poll.title}</TableCell>
               <TableCell>{poll.votes}</TableCell>
               <TableCell>{poll.options?.length || 0}</TableCell>
             </TableRow>

@@ -1,14 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import {
-  Alert,
-  Container,
-  LinearProgress,
-  Snackbar,
-  Typography,
-} from "@mui/material";
+import { Container, LinearProgress, Typography } from "@mui/material";
 
 import { getPolls } from "../../services/poll";
 import HomeTable from "./table";
+import { ErrorSnackbar } from "../shared/errorSnackbar";
 
 export default () => {
   const {
@@ -31,15 +26,10 @@ export default () => {
       ) : (
         <HomeTable polls={polls!} />
       )}
-      <Snackbar
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      <ErrorSnackbar
         open={!!error}
-        autoHideDuration={3000}
-      >
-        <Alert severity="error" variant="filled" sx={{ width: "100%" }}>
-          Error getting polls. Please try again later.
-        </Alert>
-      </Snackbar>
+        message="Error getting polls. Please try again later."
+      />
     </Container>
   );
 };

@@ -5,3 +5,55 @@
   height: 100%;
   display: flex;
 }
+
+#header-container {
+  padding: 20px;
+  border-bottom: 1px solid #1c2d52;
+  display: flex;
+}
+
+#back-button,
+#header-placeholder {
+  width: 46px;
+}
+
+#back-button-icon {
+  color: #1c2d52;
+  height: 30px;
+  width: 30px;
+}
+
+#header-text {
+  flex: 1;
+}
+
+#result-option-container {
+  position: relative;
+  display: flex;
+}
+
+#result-option-bar {
+  height: 54px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+#result-option-title {
+  position: absolute;
+  color: white;
+  top: 15px;
+  left: 15px;
+}
+
+#result-option-value {
+  position: absolute;
+  color: white;
+  top: 15px;
+  right: 15px;
+}
+
+#result-container {
+  padding: 40px 20px;
+  border-bottom: 1px solid #1c2d52;
+  margin-bottom: 20px;
+}
