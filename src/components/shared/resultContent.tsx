@@ -6,7 +6,7 @@ interface ICardContentProps {
   poll: IPoll;
 }
 
-export function CardContentResult({ poll }: ICardContentProps) {
+export function ResultContent({ poll }: ICardContentProps) {
   return (
     <>
       <Container id="result-container">
@@ -18,9 +18,7 @@ export function CardContentResult({ poll }: ICardContentProps) {
         </Typography>
       </Container>
       {poll.options?.map((option, idx) => (
-        <Container style={{ padding: "0 20px 20px 20px" }} key={idx}>
-          <Results option={option} totalVotes={poll.votes} />
-        </Container>
+        <Results key={idx} option={option} totalVotes={poll.votes} />
       ))}
     </>
   );

@@ -4,7 +4,7 @@ import { useParams } from "react-router";
 import { getPoll } from "../../services/poll";
 import { CardHeader } from "../shared/cardHeader";
 import { ErrorSnackbar } from "../shared/errorSnackbar";
-import { CardContentResult } from "../shared/cardContentResult";
+import { ResultContent } from "../shared/resultContent";
 import { CardContainer } from "../shared/cardContainer";
 
 export default () => {
@@ -24,7 +24,7 @@ export default () => {
   return (
     <CardContainer showLoading={isPending || !poll}>
       <CardHeader />
-      <CardContentResult poll={poll!} />
+      <ResultContent poll={poll!} />
       <ErrorSnackbar
         open={!!error}
         message={"Error fetching poll. Please try again later."}

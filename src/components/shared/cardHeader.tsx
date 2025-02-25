@@ -18,7 +18,7 @@ export function CardHeader() {
       <Typography id="header-text" variant="h4" textAlign="center">
         Poll
       </Typography>
-      <div id="placeholder" />
+      <div id="header-placeholder" />
     </Container>
   );
 }

@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router";
 
 import { addPollVote, getPoll } from "../../services/poll";
 import { CardHeader } from "../shared/cardHeader";
-import { CardContentPoll } from "../shared/cardContentPoll";
+import { PollContent } from "../shared/pollContent";
 import { ErrorSnackbar } from "../shared/errorSnackbar";
 import { CardContainer } from "../shared/cardContainer";
 import { useState } from "react";
@@ -38,7 +38,7 @@ export default () => {
   return (
     <CardContainer showLoading={showLoading}>
       <CardHeader />
-      <CardContentPoll poll={poll!} addPollVote={callAddPollVote} />
+      <PollContent poll={poll!} addPollVote={callAddPollVote} />
       <ErrorSnackbar
         open={!!error || addVoteError}
         message={

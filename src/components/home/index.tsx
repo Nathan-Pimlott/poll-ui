@@ -18,9 +18,13 @@ export default () => {
   });
 
   return (
-    <Container style={{ padding: 20 }}>
-      <Typography variant="h3">Active polls</Typography>
-      <Typography>Click a poll to vote and view other users votes.</Typography>
+    <Container className="padding">
+      <Typography variant="h3" id="title">
+        Active polls
+      </Typography>
+      <Typography id="subtitle">
+        Click a poll to vote and view other users votes.
+      </Typography>
       {isPending || !polls ? (
         <LinearProgress style={{ marginTop: 20 }} />
       ) : (

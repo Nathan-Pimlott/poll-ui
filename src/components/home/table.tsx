@@ -21,8 +21,8 @@ export default ({ polls }: IProps) => {
   const navigate = useNavigate();
 
   return (
-    <TableContainer component={Paper} style={{ marginTop: 10 }}>
-      <Table id="poll-table">
+    <TableContainer component={Paper} id="table-container">
+      <Table id="table">
         <TableHead>
           <TableRow>
             {columns.map((column, idx) => (
@@ -33,6 +33,7 @@ export default ({ polls }: IProps) => {
         <TableBody>
           {polls?.map((poll, idx) => (
             <TableRow
+              id={`table-row-${idx}`}
               key={idx}
               sx={{
                 cursor: "pointer",
@@ -42,9 +43,11 @@ export default ({ polls }: IProps) => {
                 navigate(`/poll/${poll.id}`);
               }}
             >
-              <TableCell>{poll.title}</TableCell>
-              <TableCell>{poll.votes}</TableCell>
-              <TableCell>{poll.options?.length || 0}</TableCell>
+              <TableCell id="poll-title">{poll.title}</TableCell>
+              <TableCell id="poll-votes">{poll.votes}</TableCell>
+              <TableCell id="poll-options">
+                {poll.options?.length || 0}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

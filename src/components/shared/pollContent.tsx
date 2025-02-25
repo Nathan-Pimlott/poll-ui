@@ -6,29 +6,21 @@ interface ICardContentProps {
   addPollVote: (id: string) => void;
 }
 
-export function CardContentPoll({ poll, addPollVote }: ICardContentProps) {
+export function PollContent({ poll, addPollVote }: ICardContentProps) {
   return (
     <>
-      <Container
-        style={{
-          padding: "40px 20px",
-          borderBottom: "1px solid #1c2d52",
-          marginBottom: 20,
-        }}
-      >
-        <Typography variant="h4" textAlign="center">
+      <Container id="poll-container">
+        <Typography id="poll-title" variant="h4" textAlign="center">
           {poll.title}
         </Typography>
       </Container>
       {poll.options?.map((option, idx) => (
-        <Container style={{ padding: "0 20px 20px 20px" }} key={idx}>
+        <Container id="poll-option-container" key={idx}>
           <Button
             variant="contained"
             fullWidth
-            style={{
-              padding: 15,
-              textTransform: "none",
-            }}
+            className="poll-option-button"
+            id={`poll-option-${idx}`}
             onClick={() => {
               addPollVote(option.id);
             }}
