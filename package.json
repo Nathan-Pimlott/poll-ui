@@ -9,6 +9,7 @@
     "build": "tsc && vite build",
     "test": "jest --verbose --passWithNoTests",
     "test:functional": "cypress run --browser chrome",
+    "types:check": "npx tsc --noEmit",
     "format:write": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
     "format:check": "prettier './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
     "prepare": "husky"
